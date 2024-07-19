@@ -1,0 +1,19 @@
+plugins {
+    id("signal-sample-app")
+    id("com.google.devtools.ksp")
+}
+
+android {
+    namespace = "org.signal.imageeditor.app"
+
+    defaultConfig {
+        applicationId = "org.signal.imageeditor.app"
+    }
+}
+
+dependencies {
+    implementation(project(":image-editor"))
+
+    implementation(libs.glide.glide)
+    ksp(libs.glide.ksp)
+}

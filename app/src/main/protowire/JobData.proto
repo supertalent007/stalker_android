@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package signal;
+
+import "ResumableUploads.proto";
+
+option java_package        = "org.stalker.securesms.jobs.protos";
+option java_multiple_files = true;
+
+
+message CallSyncEventJobRecord {
+  uint64 recipientId = 1;
+  reserved             2;
+  uint64 callId      = 3;
+  uint32 direction   = 4;
+  uint32 event       = 5;
+}
+
+message CallSyncEventJobData {
+  repeated CallSyncEventJobRecord records = 1;
+}
+
+message CallLinkRefreshSinceTimestampJobData {
+  uint64 timestamp = 1;
+}
+
+message CallLogEventSendJobData {
+  bytes callLogEvent = 1;
+}
+
+message CallLinkUpdateSendJobData {
+  enum Type {
+    UPDATE = 0;
+    DELETE = 1;
+  }
+
+  string        callLinkRoomId = 1;
+  optional Type type           = 2;
+}
+
+message AttachmentUploadJobData {
+  uint64 attachmentId = 1;
+  reserved /*attachmentUniqueId*/ 2;
+  optional ResumableUpload uploadSpec = 3;
+}
+
+message PreKeysSyncJobData {
+  bool forceRefreshRequested = 1;
+}
+
+message ArchiveAttachmentJobData {
+  uint64 attachmentId = 1;
+}
+
+message ArchiveAttachmentBackfillJobData {
+  optional uint64 attachmentId = 1;
+  ResumableUpload uploadSpec = 2;
+  optional uint32 count = 3;
+  optional uint32 totalCount = 4;
+}
+
+message ArchiveThumbnailUploadJobData {
+  uint64 attachmentId = 1;
+}

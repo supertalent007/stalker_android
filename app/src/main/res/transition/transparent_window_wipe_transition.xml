@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<transitionSet>
+    <transition class="org.stalker.securesms.animation.transitions.CircleAvatarTransition" />
+
+    <transition class="org.stalker.securesms.animation.transitions.WipeDownTransition" />
+</transitionSet>

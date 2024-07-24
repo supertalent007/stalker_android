@@ -59,6 +59,7 @@ class FindByViewModel(
     }.await()
 
     internalState.value = state.value.copy(isLookupInProgress = false)
+
     return findByResult
   }
 
